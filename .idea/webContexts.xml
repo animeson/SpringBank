@@ -5,6 +5,9 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cartList.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/createDebit.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/addCard.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/addLoan.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/mainPage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
       </map>
     </option>
   </component>

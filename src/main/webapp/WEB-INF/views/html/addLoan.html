@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/formStyle.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Create loan</title>
+    </head>
+<body>
+
+<form th:metod = "POST" th:action = "@{/addLoan}" th:object = "${loan}"
+        class="decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner" style="text-align: center;">
+        <h3>Create loan</h3>
+        <label for="amount">
+            <input type="text" placeholder="Amount" id="amount" th:field="*{amount}">
+        </label>
+        <label for="interest">
+            <input type="text" placeholder="Interest" id="interest" th:field="*{interestRate}" >
+        </label>
+        <label for="term">
+            <input type="text" placeholder="Term" id="term" th:="*{creditTerm}">
+        </label>
+
+        <label for="description">
+            <textarea placeholder="Description" rows="3" id="description"></textarea>
+        </label>
+
+        <a  class="button button1" style="vertical-align:center" ><span> Submit</span></a>
+    </div>
+</form>
+
+
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.webApp.config.entity;
+package com.webApp.entity;
 
 import java.util.Date;
 import java.util.Objects;
@@ -11,6 +11,9 @@ public class Loan {
     private int creditTerm;
     private double monthlyPayment;
 
+
+    public Loan() {
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
