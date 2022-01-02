@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: mom
-Build-Jdk: Azul Zulu Community™ version 16.0.2
+Built-By: father
+Build-Jdk: Amazon Corretto version 16.0.2
 
