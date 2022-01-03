@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th ="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Add loan</title>
 </head>
 <body>
-<button type="submit"> sdsd</button>
+<div th:method="POST" th:action="@{/addLoan}" th:object="*{loan}">
 
+    <label for="amount">
+        <input id="amount" type="text" placeholder="amount">
+    </label>
+    <br/>
+    <label for="interest">
+        <input id="interest" type="text" placeholder="interest">
+    </label>
+    <br/>
+    <label for="term">
+        <input id="term" type="text" placeholder="term">
+    </label>
+    <br/>
+    <label for="description">
+        <textarea id="description" placeholder="description"></textarea>
+    </label>
+    <br/>
+
+    <a type="submit"> submit </a>
+
+</div>
 </body>
 </html>

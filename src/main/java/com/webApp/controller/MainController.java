@@ -2,7 +2,6 @@ package com.webApp.controller;
 
 import com.webApp.entity.DebitCard;
 import com.webApp.entity.Loan;
-import com.webApp.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,38 +10,44 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController  {
-   //get method
+   //get методы
     @GetMapping("/mainPage")
     public String mainPage () {
-        return "/mainPage";
+        return "mainPage";
     }
     @GetMapping("/loans")
-    public String loans () {
-        return "/loans";
+    public String loans (Model model) {
+        return "allLoans";
     }
     @GetMapping("/cards")
-    public String cards () {
-        return "/cards";
-    }
-    @GetMapping("/addCard")
-    public String addCard (Model model) {
-        model.addAttribute("card", new DebitCard());
-        return "/addCard";
+    public String cards (Model model) {
+        return "allCards";
     }
 
-    @GetMapping("/addLoan")
-    public String addLoan (Model model) {
-        model.addAttribute("loan", new Loan());
-        return "/addLoan";
+    //get методы для отображения страниц создания карты и кредита
+
+    @GetMapping("/create_card")
+    public String createNewCards (@ModelAttribute("card") DebitCard debitCard) {
+        return "addCard";
     }
-//post method
-    @PostMapping ("/createNewLoan")
-    public String newLoan(@ModelAttribute("loan") Model model) {
-        return "redirect:/loans";
+
+
+    @GetMapping("/create_loan")
+    public String createNewLoan (@ModelAttribute("loan") Loan loan) {
+        return "addLoan";
     }
-    @PostMapping("/createNewCard")
-    public String newCart (@ModelAttribute("cart") Model model){
+
+
+
+//post методы
+    @PostMapping("/addCard")
+    public String addCard (@ModelAttribute("card") DebitCard debitCard) {
         return "redirect:/cards";
+    }
+
+    @PostMapping("/addLoan")
+    public String addLoan (@ModelAttribute("loan") Loan loan) {
+        return "redirect:/loans";
     }
 
 }

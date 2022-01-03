@@ -12,6 +12,7 @@ public class Loan {
     private double monthlyPayment;
 
 
+
     public Loan() {
     }
     @Override
