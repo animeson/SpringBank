@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th ="http://www.thymeleaf.org/">
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>All user credit</title>
 </head>
 <body>
 
-<div>
-    <a> amount: value</a>
+<div th:each="loans : ${loan}">
+    <a>amount:</a>
+    <a th:href="@{/loans/{amount} (amount = ${loans.getAmount()})}" th:text="${loans.amount}">value</a>
     <br/>
-    <a href ="/create_loan"> add loan</a>
+</div>
+<div>
+    <a href="/create_loan"> add loan</a>
     <br/>
     <a href="/mainPage"> main page</a>
-
 </div>
+
 
 </body>
 </html>

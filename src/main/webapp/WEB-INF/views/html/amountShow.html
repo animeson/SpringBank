@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loan information</title>
+</head>
+<body>
+<div>
+    <p th:text="${loan.amount}"></p>
+    <p th:text="${loan.creditTerm}"></p>
+    <p th:text="${loan.interestRate}"></p>
+    <p th:text="${loan.dateOfRegistration}"></p>
+    <p th:text="${loan.monthlyPayment}"></p>
+    <a href="/loans">cancel</a>
+</div>
+</body>
+</html>

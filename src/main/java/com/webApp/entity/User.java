@@ -1,36 +1,24 @@
 package com.webApp.entity;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class User {
-    String firstName;
-    String lastName;
-    String email;
-    String password;
-    Date registrationDate;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private SimpleDateFormat registrationDate;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String firstName, String lastName, String email, String password, Date registrationDate) {
+    public User(String firstName, String lastName, String email, String password, SimpleDateFormat registrationDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.registrationDate = registrationDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(registrationDate, user.registrationDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName, email, password, registrationDate);
     }
 
     public String getFirstName() {
@@ -65,11 +53,25 @@ public class User {
         this.password = password;
     }
 
-    public Date getRegistrationDate() {
+    public SimpleDateFormat getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(SimpleDateFormat registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(registrationDate, user.registrationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email, password, registrationDate);
+    }
+
 }

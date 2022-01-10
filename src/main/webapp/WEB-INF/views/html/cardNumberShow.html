@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>card information</title>
+</head>
+<body>
+<div>
+    <p th:text="${cards.lastName}"></p>
+    <p th:text="${cards.firstName}"></p>
+    <p th:text="${cards.cardNumber}"></p>
+    <p th:text="${cards.CVV}"></p>
+    <p th:text="${cards.term}"></p>
+    <a href="/cards">cancel</a>
+</div>
+
+</body>
+</html>

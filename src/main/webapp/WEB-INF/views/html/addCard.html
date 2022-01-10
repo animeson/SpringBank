@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th ="http://www.thymeleaf.org/">
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Add card</title>
 </head>
 <body>
-<div th:method="POST" th:action="@{/addCard}" th:object="*{card}">
+<form th:method="POST" th:action="@{/addCard}" th:object="${card}">
 
-    <label for="firstName"> enter first name </label>
-    <input type="text" id="firstName" th:field="*{firstName}">
+    <label> create card</label>
+    <br/>
+    <br/>
+    <label for="firstName"></label>
+    <input placeholder="first name" type="text" id="firstName" th:field="*{firstName}">
     <br/>
 
-    <label for="lastName">enter last name </label>
-    <input type="text" id="lastName" th:field="*{lastName}">
+    <label for="lastName"></label>
+    <input placeholder="last name" type="text" id="lastName" th:field="*{lastName}">
     <br/>
 
-    <label for="term">enter term </label>
-    <textarea id="term" th:field="*{term}"> </textarea>
+    <label for="term"></label>
+    <input type="date" id="term" placeholder="term" th:field="*{term}">
     <br/>
-
+    <br/>
     <input type="submit" value="create">
+    <a href="/cards">cancel</a>
 
 
-</div>
+</form>
 
 </body>
 </html>

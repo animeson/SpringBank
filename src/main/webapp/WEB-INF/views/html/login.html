@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th ="http://www.thymeleaf.org/">
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
-  <meta charset="UTF-8">
-  <title>Login in</title>
+    <meta charset="UTF-8">
+    <title>Login in</title>
 </head>
 <body>
-<div >
 
-<label for="login">
-  <input id="login">
-</label>
 
-  <label for="password">
-    <input id="password">
-  </label>
-  <br/>
+<form th:method="POST" th:action="@{/thisUser}" th:object="${user}">
+    <label for="login">
+        <input type="email" id="login" th:field="*{email}">
+    </label>
 
-  <a href="/thisUser">Login in</a>
-  <a href="/registration"> Registration</a>
-</div>
+    <label for="password">
+        <input type="password" id="password" th:field="*{password}">
+    </label>
+    <br/>
+
+    <input type="submit" value="Login in">
+    <br/>
+    <br/>
+    <label>First time here?</label>
+    <a href="/registration"> Registration</a>
+</form>
 
 
 </body>

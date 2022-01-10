@@ -1,20 +1,21 @@
 package com.webApp.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
 public class Loan {
 
-    private Date dateOfRegistration;
+    private SimpleDateFormat dateOfRegistration;
     private double amount;
     private double interestRate;
     private int creditTerm;
     private double monthlyPayment;
 
 
-
     public Loan() {
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,11 +40,11 @@ public class Loan {
                 '}';
     }
 
-    public Date getDateOfRegistration() {
+    public SimpleDateFormat getDateOfRegistration() {
         return dateOfRegistration;
     }
 
-    public void setDateOfRegistration(Date dateOfRegistration) {
+    public void setDateOfRegistration(SimpleDateFormat dateOfRegistration) {
         this.dateOfRegistration = dateOfRegistration;
     }
 
@@ -79,7 +80,7 @@ public class Loan {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public Loan(Date dateOfRegistration, double amount, double interestRate, int creditTerm, double monthlyPayment) {
+    public Loan(SimpleDateFormat dateOfRegistration, double amount, double interestRate, int creditTerm, double monthlyPayment) {
         this.dateOfRegistration = dateOfRegistration;
         this.amount = amount;
         this.interestRate = interestRate;
