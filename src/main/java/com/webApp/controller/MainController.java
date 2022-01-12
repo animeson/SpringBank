@@ -2,6 +2,7 @@ package com.webApp.controller;
 
 import com.webApp.dao.DebitCardDao;
 import com.webApp.dao.LoanDao;
+import com.webApp.dao.UserDao;
 import com.webApp.entity.DebitCard;
 import com.webApp.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,45 +18,46 @@ public class MainController {
 
     private final DebitCardDao debitCardDao;
     private final LoanDao loanDao;
+    private final UserDao userDao;
 
     @Autowired
-    public MainController(DebitCardDao debitCardDao, LoanDao loanDao) {
+    public MainController(DebitCardDao debitCardDao, LoanDao loanDao, UserDao userDao) {
         this.debitCardDao = debitCardDao;
         this.loanDao = loanDao;
+        this.userDao = userDao;
     }
 
 
     //get методы
-    @GetMapping("/mainPage")
-    public String mainPage() {
+    @GetMapping("/home")
+    public String mainPage(Model model) {
+        model.addAttribute("user", userDao.showSelectedUser(userDao.getCustomer().getId()));
         return "mainPage";
     }
 
     //get методы для отображения всех карт и кредитов
-    @GetMapping("/loans")
+    @GetMapping("/loan")
     public String loans(Model model) {
-
-
-        model.addAttribute("loan", loanDao.showAllLoans());
+        model.addAttribute("loans", loanDao.showAllLoans());
         return "allLoans";
     }
 
-    @GetMapping("loans/{amount}")
+    @GetMapping("loan{amount}")
     public String show(@PathVariable("amount") double amount, Model model) {
         model.addAttribute("loan", loanDao.showSelectedCredit(amount));
         return "amountShow";
     }
 
 
-    @GetMapping("/cards")
+    @GetMapping("/card")
     public String cards(Model model) {
         model.addAttribute("card", debitCardDao.showAllCard());
         return "allCards";
     }
 
-    @GetMapping("cards/{card}")
-    public String show(@PathVariable("card") String card, Model model) {
-        model.addAttribute("cards", debitCardDao.showSelectedCard(card));
+    @GetMapping("card{cards}")
+    public String show(@PathVariable("cards") String card, Model model) {
+        model.addAttribute("card", debitCardDao.showSelectedCard(card));
         return "cardNumberShow";
     }
 
@@ -76,14 +78,14 @@ public class MainController {
     //post методы
     @PostMapping("/addCard")
     public String addCard(@ModelAttribute("card") DebitCard debitCard) {
-//        debitCardDao.save(debitCard);
-        return "redirect:/cards";
+        /*debitCardDao.save(debitCard);*/
+        return "redirect:/card";
     }
 
     @PostMapping("/addLoan")
     public String addLoan(@ModelAttribute("loan") Loan loan) {
 //        loanDao.save(loan);
-        return "redirect:/loans";
+        return "redirect:/loan";
     }
 
 }

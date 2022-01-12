@@ -10,11 +10,11 @@
 
 <form th:method="POST" th:action="@{/thisUser}" th:object="${user}">
     <label for="login">
-        <input type="email" id="login" th:field="*{email}">
+        <input type="email" id="login" th:field="*{email}" placeholder="email">
     </label>
 
     <label for="password">
-        <input type="password" id="password" th:field="*{password}">
+        <input type="password" id="password" th:field="*{password}" placeholder="password">
     </label>
     <br/>
 

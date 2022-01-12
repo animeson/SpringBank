@@ -7,15 +7,15 @@
 </head>
 <body>
 
-<div th:each="loans : ${loan}">
+<div th:each=" userLoan : ${loans}">
     <a>amount:</a>
-    <a th:href="@{/loans/{amount} (amount = ${loans.getAmount()})}" th:text="${loans.amount}">value</a>
+    <a th:href="@{loan{amount} (amount = ${userLoan.getAmount()})}" th:text="${userLoan.amount}">value</a>
     <br/>
 </div>
 <div>
     <a href="/create_loan"> add loan</a>
     <br/>
-    <a href="/mainPage"> main page</a>
+    <a href="/home"> main page</a>
 </div>
 
 

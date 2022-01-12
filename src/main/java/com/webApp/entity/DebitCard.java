@@ -1,7 +1,6 @@
 package com.webApp.entity;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class DebitCard {
@@ -10,21 +9,22 @@ public class DebitCard {
     private int CVV;
     private String firstName;
     private String lastName;
-    private SimpleDateFormat term;
+    private LocalDate term;
+    private User userId;
 
 
     public DebitCard() {
     }
 
-    public DebitCard(double currentBalance, String cardNumber, int CVV, String firstName, String lastName, SimpleDateFormat term) {
+    public DebitCard(double currentBalance, String cardNumber, int CVV, String firstName, String lastName, LocalDate term, User userId) {
         this.currentBalance = currentBalance;
         this.cardNumber = cardNumber;
         this.CVV = CVV;
         this.firstName = firstName;
         this.lastName = lastName;
         this.term = term;
+        this.userId = userId;
     }
-
 
     public double getCurrentBalance() {
         return currentBalance;
@@ -66,12 +66,20 @@ public class DebitCard {
         this.lastName = lastName;
     }
 
-    public SimpleDateFormat getTerm() {
+    public LocalDate getTerm() {
         return term;
     }
 
-    public void setTerm(SimpleDateFormat term) {
+    public void setTerm(LocalDate term) {
         this.term = term;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -79,13 +87,11 @@ public class DebitCard {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DebitCard debitCard = (DebitCard) o;
-        return Double.compare(debitCard.currentBalance, currentBalance) == 0 && CVV == debitCard.CVV && Objects.equals(cardNumber, debitCard.cardNumber) && Objects.equals(firstName, debitCard.firstName) && Objects.equals(lastName, debitCard.lastName) && Objects.equals(term, debitCard.term);
+        return Double.compare(debitCard.currentBalance, currentBalance) == 0 && CVV == debitCard.CVV && Objects.equals(cardNumber, debitCard.cardNumber) && Objects.equals(firstName, debitCard.firstName) && Objects.equals(lastName, debitCard.lastName) && Objects.equals(term, debitCard.term) && Objects.equals(userId, debitCard.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currentBalance, cardNumber, CVV, firstName, lastName, term);
+        return Objects.hash(currentBalance, cardNumber, CVV, firstName, lastName, term, userId);
     }
-
-
 }

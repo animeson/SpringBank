@@ -1,50 +1,36 @@
 package com.webApp.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Loan {
 
-    private SimpleDateFormat dateOfRegistration;
+    private LocalDate dateOfRegistration;
     private double amount;
     private double interestRate;
     private int creditTerm;
     private double monthlyPayment;
+    private User userId;
 
 
     public Loan() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Loan loan = (Loan) o;
-        return Double.compare(loan.amount, amount) == 0 && Double.compare(loan.interestRate, interestRate) == 0 && creditTerm == loan.creditTerm && Double.compare(loan.monthlyPayment, monthlyPayment) == 0 && dateOfRegistration.equals(loan.dateOfRegistration);
+    public Loan(LocalDate dateOfRegistration, double amount, double interestRate, int creditTerm, double monthlyPayment, User userId) {
+        this.dateOfRegistration = dateOfRegistration;
+        this.amount = amount;
+        this.interestRate = interestRate;
+        this.creditTerm = creditTerm;
+        this.monthlyPayment = monthlyPayment;
+        this.userId = userId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(dateOfRegistration, amount, interestRate, creditTerm, monthlyPayment);
-    }
-
-    @Override
-    public String toString() {
-        return "ru.svistun.springcourse.entity.Loan{" +
-                "dateOfRegistration=" + dateOfRegistration +
-                ", amount=" + amount +
-                ", interestRate=" + interestRate +
-                ", creditTerm=" + creditTerm +
-                ", monthlyPayment=" + monthlyPayment +
-                '}';
-    }
-
-    public SimpleDateFormat getDateOfRegistration() {
+    public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
     }
 
-    public void setDateOfRegistration(SimpleDateFormat dateOfRegistration) {
+    public void setDateOfRegistration(LocalDate dateOfRegistration) {
         this.dateOfRegistration = dateOfRegistration;
     }
 
@@ -80,11 +66,24 @@ public class Loan {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public Loan(SimpleDateFormat dateOfRegistration, double amount, double interestRate, int creditTerm, double monthlyPayment) {
-        this.dateOfRegistration = dateOfRegistration;
-        this.amount = amount;
-        this.interestRate = interestRate;
-        this.creditTerm = creditTerm;
-        this.monthlyPayment = monthlyPayment;
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Loan loan = (Loan) o;
+        return Double.compare(loan.amount, amount) == 0 && Double.compare(loan.interestRate, interestRate) == 0 && creditTerm == loan.creditTerm && Double.compare(loan.monthlyPayment, monthlyPayment) == 0 && Objects.equals(dateOfRegistration, loan.dateOfRegistration) && Objects.equals(userId, loan.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateOfRegistration, amount, interestRate, creditTerm, monthlyPayment, userId);
     }
 }

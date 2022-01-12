@@ -7,12 +7,39 @@
 </head>
 <body>
 <div>
-    <p th:text="${cards.lastName}"></p>
-    <p th:text="${cards.firstName}"></p>
-    <p th:text="${cards.cardNumber}"></p>
-    <p th:text="${cards.CVV}"></p>
-    <p th:text="${cards.term}"></p>
-    <a href="/cards">cancel</a>
+
+    <table>
+        <tr for="lastName">
+            <td id="lastName">last name:</td>
+            <td th:text="${card.lastName}"></td>
+        </tr>
+
+        <tr for="firstName">
+            <td id="firstName">firstName:</td>
+            <td th:text="${card.firstName}"></td>
+        </tr>
+
+        <tr for="cardNumber">
+            <td id="cardNumber">card number:</td>
+            <td th:text="${card.cardNumber}"></td>
+        </tr>
+        <tr for="CVV">
+            <td id="CVV">CVV:</td>
+            <td th:text="${card.CVV}"></td>
+        </tr>
+        <tr for="term">
+            <td id="term">term:</td>
+            <td th:text="${card.term}"></td>
+        </tr>
+
+        <tr>
+            <td id="userId">user id:</td>
+            <td th:text="${card.userId.id}"></td>
+        </tr>
+
+    </table>
+
+    <a href="/card">cancel</a>
 </div>
 
 </body>

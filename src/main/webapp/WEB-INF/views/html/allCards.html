@@ -7,15 +7,15 @@
 </head>
 <body>
 
-<div th:each="cards : ${card}">
+<div th:each="userlNum: ${card}">
     <a> card number:</a>
-    <a th:href="@{cards/{card} (card = ${cards.getCardNumber()})} " th:text="${cards.cardNumber}"></a>
+    <a th:href="@{card{cards} (cards = ${userlNum.getCardNumber()})}" th:text="${userlNum.cardNumber}"></a>
     <br/>
 </div>
 <div>
     <a href="/create_card"> add card</a>
     <br/>
-    <a href="/mainPage"> main page</a>
+    <a href="/home"> main page</a>
 </div>
 </body>
 </html>

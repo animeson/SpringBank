@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>home</title>
 </head>
 <body>
 
-<div>
-    <label> select</label>
-    <br/>
-    <a href="/loans"><span> credit </span></a>
-    <label>or</label>
-    <a href="/cards"><span> card </span></a>
+<form th:each="ID : ${user}">
 
-</div>
+    <label>Hello,</label>
+    <a th:href="@{id{ID} (ID = ${user.getId()})}" th:text="${user.firstName}">first name</a>
+    <a th:href="@{id{ID} (ID = ${user.getId()})}" th:text="${user.lastName}">last last</a>
+    <label>!</label>
+    <br/>
+
+    <label>select an action</label>
+    <br/>
+
+    <label>
+        <a href="/loan"><span>loan</span></a>
+        <label>or</label>
+        <a href="/card"><span>card</span></a>
+        <br/>
+    </label>
+
+
+    <label>
+        <a href="/"><span>exit</span></a>
+    </label>
+
+</form>
 
 </body>
 </html>

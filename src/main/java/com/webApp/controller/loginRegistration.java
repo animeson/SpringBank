@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 @Controller
 public class loginRegistration {
@@ -26,7 +27,8 @@ public class loginRegistration {
     @GetMapping("/")
     public String getLoginPage(@ModelAttribute("user") User user) {
         return "login";
-    }
+
+   }
 
     @GetMapping("/registration")
     public String getRegisterPage(Model model) {
@@ -37,7 +39,7 @@ public class loginRegistration {
     //post метооды
     @PostMapping("/createNewUser")
     public String doRegister(@ModelAttribute("user") User user) {
-        user.setRegistrationDate(new SimpleDateFormat());
+        //user.setRegistrationDate();
         /*userDao.save(user);*/
         return "redirect:/";
     }
@@ -46,12 +48,21 @@ public class loginRegistration {
     public String doLogin(@ModelAttribute("user") User user) {
         userDao.showAllUsers();
         if (userDao.singIn(user)) {
-            return "redirect:/mainPage";
+            return "redirect:/home";
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/id{ID}")
+    public String infoUser(@PathVariable("ID") long id, Model model) {
+        if (userDao.getCustomer().getId() == id) {
+            model.addAttribute("user", userDao.showSelectedUser(id));
+            return "infoUser";
+        }
+        return "redirect:/home";
+
 
 
     }
-
 
 }

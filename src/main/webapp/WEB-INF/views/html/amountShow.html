@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>loan information</title>
 </head>
 <body>
 <div>
-    <p th:text="${loan.amount}"></p>
-    <p th:text="${loan.creditTerm}"></p>
-    <p th:text="${loan.interestRate}"></p>
-    <p th:text="${loan.dateOfRegistration}"></p>
-    <p th:text="${loan.monthlyPayment}"></p>
-    <a href="/loans">cancel</a>
+    <table>
+        <tr for="amount">
+            <td id="amount">amount:</td>
+            <td th:text="${loan.amount}"></td>
+        </tr>
+
+        <tr for="creditTerm">
+            <td id="creditTerm">credit term:</td>
+            <td th:text="${loan.creditTerm}"></td>
+        </tr>
+
+        <tr for="interestRate">
+            <td id="interestRate">interest rate:</td>
+            <td th:text="${loan.interestRate}"></td>
+        </tr>
+        <tr for="dateOfRegistration">
+            <td id="dateOfRegistration">date of registration:</td>
+            <td th:text="${loan.dateOfRegistration}"></td>
+        </tr>
+        <tr for="monthlyPayment">
+            <td id="monthlyPayment">monthly payment:</td>
+            <td th:text="${loan.monthlyPayment}"></td>
+        </tr>
+        <tr>
+            <td id="userId">user id:</td>
+            <td th:text="${loan.userId.id}"></td>
+        </tr>
+    </table>
+
+    <a href="/loan">cancel</a>
 </div>
 </body>
 </html>

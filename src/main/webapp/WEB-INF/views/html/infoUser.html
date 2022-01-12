@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="Info + ' ' + about + ' ' +  ${user.firstName} + ' ' + ${user.lastName}"></title>
+
+</head>
+<body>
+<div>
+    <table>
+        <tr for="firstName">
+            <td>first name:</td>
+            <td th:text="${user.firstName}"></td>
+        </tr>
+
+        <tr for="lastName">
+            <td>last name:</td>
+            <td th:text="${user.lastName}"></td>
+        </tr>
+
+        <tr for="email">
+            <td>email:</td>
+            <td th:text="${user.email}"></td>
+        </tr>
+
+        <tr for="registrationDate">
+            <td>registration date:</td>
+            <td th:text="${user.registrationDate}"></td>
+        </tr>
+        <tr>
+        <tr for="phoneNumber">
+            <td>phone number:</td>
+            <td th:text="${user.phoneNumber}"></td>
+        </tr>
+        <tr for="password">
+            <td>password</td>
+            <td th:text="${user.getPassword}"></td>
+        </tr>
+
+        <tr>
+            <td th:text="${user.card}"></td>
+        </tr>
+        <tr>
+            <td th:text="${user.loan}"></td>
+        </tr>
+
+        <tr>
+
+            <td>
+                <a>edit</a>
+                <a href="/home">cancel</a>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,28 +1,34 @@
 package com.webApp.dao;
 
 import com.webApp.entity.DebitCard;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 @Component
 public class DebitCardDao extends ConnectionToDb {
     private List<DebitCard> debitCards;
+    PreparedStatement preparedStatement;
+
+    private final UserDao userDao;
+    @Autowired
+    public DebitCardDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public List<DebitCard> showAllCard() {
         debitCards = new ArrayList<>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM CARD");
+            preparedStatement = connection.prepareStatement("SELECT * FROM CARD where user_id=?");
+            preparedStatement.setLong(1,userDao.getCustomer().getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 DebitCard debitCard = new DebitCard();
                 debitCard.setCurrentBalance(resultSet.getDouble("currentBalance"));
@@ -30,7 +36,7 @@ public class DebitCardDao extends ConnectionToDb {
                 debitCard.setCVV(resultSet.getInt("CVV"));
                 debitCard.setFirstName(resultSet.getString("firstName"));
                 debitCard.setLastName(resultSet.getString("lastName"));
-                debitCard.setTerm(new SimpleDateFormat(resultSet.getDate("term")));
+                debitCard.setTerm(resultSet.getDate("term").toLocalDate());
 
                 debitCards.add(debitCard);
             }
@@ -53,7 +59,6 @@ public class DebitCardDao extends ConnectionToDb {
         int CVV = random.nextInt(999 - 100 + 1) + 100;
         debitCards.add(new DebitCard(currentBalance, cardNumber, CVV, debitCard.getFirstName(), debitCard.getLastName(),
                 debitCard.getTerm()));
-
     }*/
 
 
