@@ -78,7 +78,7 @@ public class MainController {
     //post методы
     @PostMapping("/addCard")
     public String addCard(@ModelAttribute("card") DebitCard debitCard) {
-        /*debitCardDao.save(debitCard);*/
+        debitCardDao.save(debitCard);
         return "redirect:/card";
     }
 

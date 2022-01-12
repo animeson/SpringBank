@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.text.SimpleDateFormat;
-
 
 @Controller
 public class loginRegistration {
@@ -46,8 +44,8 @@ public class loginRegistration {
 
     @PostMapping("/thisUser")
     public String doLogin(@ModelAttribute("user") User user) {
-        userDao.showAllUsers();
-        if (userDao.singIn(user)) {
+        userDao.showAllUsers(user);
+        if (userDao.singIn()) {
             return "redirect:/home";
         }
         return "redirect:/";

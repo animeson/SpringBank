@@ -12,9 +12,8 @@ import java.util.List;
 
 @Component
 public class LoanDao extends ConnectionToDb {
-    private List<Loan> loans;
     private final UserDao userDao;
-    PreparedStatement preparedStatement;
+    private PreparedStatement preparedStatement;
 
     @Autowired
     public LoanDao(UserDao userDao) {
@@ -22,30 +21,43 @@ public class LoanDao extends ConnectionToDb {
     }
 
     public List<Loan> showAllLoans() {
-        loans = new ArrayList<>();
+        List<Loan> loans = new ArrayList<>();
         try {
-            preparedStatement = connection.prepareStatement("select * from loan where user_id=?");
+            preparedStatement = connection.prepareStatement("select amount from loan where user_id=?");
             preparedStatement.setLong(1, userDao.getCustomer().getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Loan loan = new Loan();
                 loan.setAmount(resultSet.getDouble("amount"));
-                loan.setInterestRate(resultSet.getDouble("interestRate"));
-                loan.setCreditTerm(resultSet.getInt("creditTerm"));
-                loan.setMonthlyPayment(resultSet.getDouble("monthlyPayment"));
-                loan.setDateOfRegistration(resultSet.getDate("dateOfRegistration").toLocalDate());
-                loan.setUserId(userDao.getCustomer());
                 loans.add(loan);
             }
-            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return loans;
     }
 
+
+
     public Loan showSelectedCredit(double loanAmount) {
-        return loans.stream().filter(loan -> loan.getAmount() == loanAmount).findAny().orElse(null);
+        Loan loan = null;
+        try {
+            preparedStatement = connection.prepareStatement("select * from loan where amount=?");
+            preparedStatement.setDouble(1, loanAmount);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                loan = new Loan();
+                loan.setAmount(resultSet.getDouble("amount"));
+                loan.setInterestRate(resultSet.getDouble("interestRate"));
+                loan.setCreditTerm(resultSet.getInt("creditTerm"));
+                loan.setMonthlyPayment(resultSet.getDouble("monthlyPayment"));
+                loan.setDateOfRegistration(resultSet.getDate("dateOfRegistration").toLocalDate());
+                loan.setUserId(userDao.getCustomer());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return loan;
     }
 
     /*public void save (Loan loan) {

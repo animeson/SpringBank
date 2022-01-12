@@ -1,46 +1,59 @@
 package com.webApp.dao;
 
 import com.webApp.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Component
 public class UserDao extends ConnectionToDb {
+    private ResultSet resultSet;
     private User customer;
-    private List<User> users;
-/*    private final LoanDao loanDao;
-    private final DebitCardDao debitCardDao;
+    private PreparedStatement preparedStatement;
+    private User user = null;
 
-    @Autowired
-    public UserDao(LoanDao loanDao, DebitCardDao debitCardDao) {
-        this.loanDao = loanDao;
-        this.debitCardDao = debitCardDao;
-    }*/
-
-
-    public User getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(User customer) {
-        this.customer = customer;
-    }
-
-    public List<User> showAllUsers() {
-
-        users = new ArrayList<>();
+    public User showAllUsers(User client) {
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM client");
+            preparedStatement = connection.prepareStatement("select id from client where email =? and password =?");
+            preparedStatement.setString(1, client.getEmail());
+            preparedStatement.setString(2, client.getPassword());
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            user = new User();
+            user.setId(resultSet.getLong("id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public boolean singIn() {
+        if (user.getId() > 0) {
+            setCustomer(user);
+            return true;
+        }
+        return false;
+
+    }
+    /*
+        public void save (User user){
+            users.add(user);
+        }*/
+
+
+    public User showSelectedUser(long id) {
+        User user = null;
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM client where id=?");
+            preparedStatement.setLong(1, id);
+            resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                User user = new User();
+                user = new User();
                 user.setId(resultSet.getLong("id"));
                 user.setFirstName(resultSet.getString("firstName"));
                 user.setLastName(resultSet.getString("lastName"));
@@ -50,35 +63,22 @@ public class UserDao extends ConnectionToDb {
                 user.setRegistrationDate(resultSet.getDate("registrationDate").toLocalDate());
 /*                user.setCard(debitCardDao.showAllCard());
                 user.setLoan(loanDao.showAllLoans());*/
-                users.add(user);
 
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return users;
-    }
-    /*
-        public void save (User user){
-            users.add(user);
-
-        }*/
-
-    public User showSelectedUser(long id) {
-        return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
+        return user;
     }
 
 
-    public boolean singIn(User user) {
-        for (User currentUser : users) {
-            if (user.getEmail().equals(currentUser.getEmail()) && user.getPassword().equals(currentUser.getPassword())) {
-                customer = currentUser;
-                return true;
-            }
-        }
-        return false;
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
 
+    public User getCustomer() {
+        return customer;
     }
 
 
