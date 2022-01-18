@@ -4,10 +4,8 @@ import com.webApp.dao.UserDao;
 import com.webApp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -26,41 +24,28 @@ public class loginRegistration {
     public String getLoginPage(@ModelAttribute("user") User user) {
         return "login";
 
-   }
+    }
 
     @GetMapping("/registration")
-    public String getRegisterPage(Model model) {
-        model.addAttribute("user", new User());
+    public String getRegisterPage(@ModelAttribute("user") User user) {
         return "registration";
     }
 
     //post метооды
     @PostMapping("/createNewUser")
-    public String doRegister(@ModelAttribute("user") User user) {
-        //user.setRegistrationDate();
+    public String doRegister(@ModelAttribute("user") UserDao userDao) {
         /*userDao.save(user);*/
         return "redirect:/";
     }
 
     @PostMapping("/thisUser")
     public String doLogin(@ModelAttribute("user") User user) {
-        userDao.showAllUsers(user);
-        if (userDao.singIn()) {
+        if (userDao.showIdUser(user.getEmail(), user.getPassword()) != null) {
             return "redirect:/home";
         }
         return "redirect:/";
     }
 
-    @GetMapping("/id{ID}")
-    public String infoUser(@PathVariable("ID") long id, Model model) {
-        if (userDao.getCustomer().getId() == id) {
-            model.addAttribute("user", userDao.showSelectedUser(id));
-            return "infoUser";
-        }
-        return "redirect:/home";
 
-
-
-    }
 
 }

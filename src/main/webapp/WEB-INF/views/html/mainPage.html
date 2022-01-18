@@ -7,11 +7,11 @@
 </head>
 <body>
 
-<form th:each="ID : ${user}">
+<form th:each="userInfo : ${user}">
 
     <label>Hello,</label>
-    <a th:href="@{id{ID} (ID = ${user.getId()})}" th:text="${user.firstName}">first name</a>
-    <a th:href="@{id{ID} (ID = ${user.getId()})}" th:text="${user.lastName}">last last</a>
+    <a th:href="@{id{ID} (ID = ${userInfo.getId})}" th:text="${userInfo.firstName}">first name</a>
+    <a th:href="@{id{ID} (ID = ${userInfo.getId()})}" th:text="${userInfo.lastName}">last last</a>
     <label>!</label>
     <br/>
 

@@ -5,6 +5,7 @@ import com.webApp.dao.LoanDao;
 import com.webApp.dao.UserDao;
 import com.webApp.entity.DebitCard;
 import com.webApp.entity.Loan;
+import com.webApp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,15 +31,20 @@ public class MainController {
 
     //get методы
     @GetMapping("/home")
-    public String mainPage(Model model) {
-        model.addAttribute("user", userDao.showSelectedUser(userDao.getCustomer().getId()));
+    public String mainPage (@ModelAttribute("user") User user) {
         return "mainPage";
+    }
+
+    @GetMapping("/id{ID}")
+    public String infoUser(@PathVariable("ID") long ID, Model model) {
+        model.addAttribute("userInfo", userDao.showSelectedUser(ID));
+        return "infoUser";
     }
 
     //get методы для отображения всех карт и кредитов
     @GetMapping("/loan")
-    public String loans(Model model) {
-        model.addAttribute("loans", loanDao.showAllLoans());
+    public String loans(@ModelAttribute("loans") LoanDao loanDao) {
+        loanDao.showAllLoans();
         return "allLoans";
     }
 
@@ -51,7 +57,7 @@ public class MainController {
 
     @GetMapping("/card")
     public String cards(Model model) {
-        model.addAttribute("card", debitCardDao.showAllCard());
+        model.addAttribute("card", debitCardDao.showAllCardNumberWhereUserId());
         return "allCards";
     }
 
@@ -78,13 +84,13 @@ public class MainController {
     //post методы
     @PostMapping("/addCard")
     public String addCard(@ModelAttribute("card") DebitCard debitCard) {
-        debitCardDao.save(debitCard);
+        debitCardDao.saveNewCard(debitCard);
         return "redirect:/card";
     }
 
     @PostMapping("/addLoan")
     public String addLoan(@ModelAttribute("loan") Loan loan) {
-//        loanDao.save(loan);
+        loanDao.save(loan);
         return "redirect:/loan";
     }
 

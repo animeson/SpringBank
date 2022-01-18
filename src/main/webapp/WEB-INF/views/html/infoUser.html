@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title th:text="Info + ' ' + about + ' ' +  ${user.firstName} + ' ' + ${user.lastName}"></title>
+    <title th:text="Info + ' ' + about + ' ' +  ${userInfo.firstName} + ' ' + ${userInfo.lastName}"></title>
 
 </head>
 <body>
@@ -11,42 +11,42 @@
     <table>
         <tr for="firstName">
             <td>first name:</td>
-            <td th:text="${user.firstName}"></td>
+            <td th:text="${userInfo.firstName}"></td>
         </tr>
 
         <tr for="lastName">
             <td>last name:</td>
-            <td th:text="${user.lastName}"></td>
+            <td th:text="${userInfo.lastName}"></td>
         </tr>
 
         <tr for="email">
             <td>email:</td>
-            <td th:text="${user.email}"></td>
+            <td th:text="${userInfo.email}"></td>
         </tr>
 
         <tr for="registrationDate">
             <td>registration date:</td>
-            <td th:text="${user.registrationDate}"></td>
+            <td th:text="${userInfo.registrationDate}"></td>
         </tr>
         <tr>
         <tr for="phoneNumber">
             <td>phone number:</td>
-            <td th:text="${user.phoneNumber}"></td>
+            <td th:text="${userInfo.phoneNumber}"></td>
         </tr>
         <tr for="password">
             <td>password</td>
-            <td th:text="${user.getPassword}"></td>
+            <td th:text="${userInfo.getPassword}"></td>
         </tr>
         <tr>
             <td>user id:</td>
-            <td th:text="${user.id}"></td>
+            <td th:text="${userInfo.id}"></td>
         </tr>
 
 <!--        <tr>
-            <td th:text="${user.card}"></td>
+            <td th:text="${userInfo.card}"></td>
         </tr>
         <tr>
-            <td th:text="${user.loan}"></td>
+            <td th:text="${userInfo.loan}"></td>
         </tr>-->
 
         <tr>

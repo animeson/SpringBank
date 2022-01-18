@@ -1,23 +1,37 @@
 package com.webApp.entity;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
+
 public class User {
-    long id;
+    private long id;
+
+
+    @NotEmpty(message = "First name should not be empty")
+    @Size(min = 2, max = 30, message = "First name should be between 2 and 30 characters")
     private String firstName;
+
+
+    @NotEmpty(message = "Last name should not be empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String lastName;
+
+    @NotEmpty(message = "Email should not be empty")
+    @Email(message = "Email should be valid")
     private String email;
     private String password;
     private LocalDate registrationDate;
     private String phoneNumber;
-    private List<DebitCard> card;
-    private List<Loan> loan;
 
-    public User() {
-    }
 
-    public User(long id, String firstName, String lastName, String email, String password, LocalDate registrationDate, String phoneNumber, List<DebitCard> card, List<Loan> loan) {
+    public User () {}
+
+
+    public User(long id, String firstName, String lastName, String email, String password, LocalDate registrationDate, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,8 +39,6 @@ public class User {
         this.password = password;
         this.registrationDate = registrationDate;
         this.phoneNumber = phoneNumber;
-        this.card = card;
-        this.loan = loan;
     }
 
     public long getId() {
@@ -85,32 +97,18 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<DebitCard> getCard() {
-        return card;
-    }
-
-    public void setCard(List<DebitCard> card) {
-        this.card = card;
-    }
-
-    public List<Loan> getLoan() {
-        return loan;
-    }
-
-    public void setLoan(List<Loan> loan) {
-        this.loan = loan;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(registrationDate, user.registrationDate) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(card, user.card) && Objects.equals(loan, user.loan);
+        return id == user.id && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(registrationDate, user.registrationDate) && Objects.equals(phoneNumber, user.phoneNumber);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, registrationDate, phoneNumber, card, loan);
+        return Objects.hash(id, firstName, lastName, email, password, registrationDate, phoneNumber);
     }
 }
