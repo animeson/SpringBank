@@ -12,30 +12,39 @@
             <td id="amount">amount:</td>
             <td th:text="${loan.amount}"></td>
         </tr>
-
-        <tr for="creditTerm">
-            <td id="creditTerm">credit term:</td>
-            <td th:text="${loan.creditTerm}"></td>
+        <tr for="dateOfRegistration">
+            <td id="dateOfRegistration">date of registration:</td>
+            <td th:text="${loan.loanDate}"></td>
         </tr>
 
         <tr for="interestRate">
             <td id="interestRate">interest rate:</td>
             <td th:text="${loan.interestRate}"></td>
         </tr>
-        <tr for="dateOfRegistration">
-            <td id="dateOfRegistration">date of registration:</td>
-            <td th:text="${loan.dateOfRegistration}"></td>
+
+        <tr for="creditTerm">
+            <td id="creditTerm">credit term:</td>
+            <td th:text="${loan.creditTerm}"></td>
         </tr>
+
+
         <tr for="monthlyPayment">
             <td id="monthlyPayment">monthly payment:</td>
             <td th:text="${loan.monthlyPayment}"></td>
         </tr>
+
+        <tr>
+            <td id="description">description:</td>
+            <td th:text="${loan.description}"></td>
+        </tr>
+
         <tr>
             <td id="userId">user id:</td>
-            <td th:text="${loan.userId.id}"></td>
+            <td th:text="${loan.userId}"></td>
         </tr>
-    </table>
 
+    </table>
+    <a>edit</a>
     <a href="/loan">cancel</a>
 </div>
 </body>

@@ -9,7 +9,7 @@
 
 <div th:each=" userLoan : ${loans}">
     <a>amount:</a>
-    <a th:href="@{loan{amount} (amount = ${userLoan.getAmount()})}" th:text="${userLoan.amount}">value</a>
+    <a th:href="@{loan{amount} (amount = ${userLoan})}" th:text="${userLoan}">value</a>
     <br/>
 </div>
 <div>

@@ -9,13 +9,13 @@ public class DebitCard {
     private String firstName;
     private String lastName;
     private LocalDate term;
-    private User userId;
+    private Long userId;
 
 
     public DebitCard() {
     }
 
-    public DebitCard(double currentBalance, String cardNumber, int CVV, String firstName, String lastName, LocalDate term, User userId) {
+    public DebitCard(double currentBalance, String cardNumber, int CVV, String firstName, String lastName, LocalDate term, Long userId) {
         this.currentBalance = currentBalance;
         this.cardNumber = cardNumber;
         this.CVV = CVV;
@@ -73,11 +73,11 @@ public class DebitCard {
         this.term = term;
     }
 
-    public User getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

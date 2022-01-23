@@ -33,10 +33,6 @@
             <td>phone number:</td>
             <td th:text="${userInfo.phoneNumber}"></td>
         </tr>
-        <tr for="password">
-            <td>password</td>
-            <td th:text="${userInfo.getPassword}"></td>
-        </tr>
         <tr>
             <td>user id:</td>
             <td th:text="${userInfo.id}"></td>
@@ -52,7 +48,7 @@
         <tr>
 
             <td>
-                <a>edit</a>
+                <a th:href="@{${'/edit/' + userInfo.id}}">edit</a>
                 <a href="/home">cancel</a>
             </td>
         </tr>

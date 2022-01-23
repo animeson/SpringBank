@@ -15,22 +15,17 @@
         <input id="amount" type="text" placeholder="amount" th:field="*{amount}">
     </label>
     <br/>
-    <label for="interest">
-        <input id="interest" type="text" placeholder="interest" th:field="*{interestRate}">
-    </label>
-    <br/>
     <label for="term">
         <input id="term" type="text" placeholder="term" th:field="*{creditTerm}">
     </label>
     <br/>
-    <label for="description">
-        <textarea id="description" placeholder="description" th:field="*{monthlyPayment}"></textarea>
+    <label for="interest">
+        <input id="interest" type="text" placeholder="interest" th:field="*{interestRate}">
     </label>
     <br/>
-    <label for="dateOfRegistration">
-        <input id="dateOfRegistration" type="date" th:field="*{dateOfRegistration}">
+    <label for="description">
+        <textarea placeholder="interest" id="description"  th:field="*{description}"> </textarea>
     </label>
-
     <br/>
     <br/>
     <input type="submit" value="create">

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit info</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/edit_user{ID} (ID = ${user.getId()})}" th:object="${user}">
+    <table>
+        <tr for="firstName">
+            <td>first name:</td>
+            <td>
+                <label>
+                    <input type="text" th:field="${user.firstName}" id="firstName">
+                </label>
+            </td>
+        </tr>
+
+        <tr for="lastName">
+            <td>last name:</td>
+            <td>
+            <label>
+                <input type="text" th:field="${user.lastName}" id="lastName">
+            </label>
+            </td>
+        </tr>
+
+        <tr for="email">
+            <td>email:</td>
+            <td>
+                <label>
+                    <input type="text" th:field="${user.email}" id="email">
+                </label>
+            </td>
+        </tr>
+        <tr>
+        <tr for="phoneNumber">
+            <td>phone number:</td>
+            <td>
+                <label>
+                    <input type="text" id="phoneNumber" th:field="${user.phoneNumber}">
+                </label>
+            </td>
+        </tr>
+        <tr for="password">
+            <td>password</td>
+            <td>
+                <label>
+                    <input type="text" id="password" th:field="${user.password}">
+                </label>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="update">
+    <a href="/home">cancel</a>
+</form>
+
+
+</body>
+</html>

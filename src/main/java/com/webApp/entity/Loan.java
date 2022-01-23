@@ -1,37 +1,29 @@
 package com.webApp.entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Loan {
 
-    private LocalDate dateOfRegistration;
-    private double amount;
-    private double interestRate;
-    private int creditTerm;
-    private double monthlyPayment;
-    private User userId;
+    private LocalDate loanDate; // когда взял кредит
+    private double amount; // сумма
+    private double interestRate; // процентная ставка
+    private int creditTerm; // срок
+    private double monthlyPayment; //ежемесячная оплата
+    private Long userId; // id пользователя
+    private String description; // описание кредита / для чего кредит
+
 
 
     public Loan() {
     }
 
-    public Loan(LocalDate dateOfRegistration, double amount, double interestRate, int creditTerm, double monthlyPayment, User userId) {
-        this.dateOfRegistration = dateOfRegistration;
-        this.amount = amount;
-        this.interestRate = interestRate;
-        this.creditTerm = creditTerm;
-        this.monthlyPayment = monthlyPayment;
-        this.userId = userId;
+    public LocalDate getLoanDate() {
+        return loanDate;
     }
 
-    public LocalDate getDateOfRegistration() {
-        return dateOfRegistration;
-    }
-
-    public void setDateOfRegistration(LocalDate dateOfRegistration) {
-        this.dateOfRegistration = dateOfRegistration;
+    public void setLoanDate(LocalDate loanDate) {
+        this.loanDate = loanDate;
     }
 
     public double getAmount() {
@@ -66,12 +58,20 @@ public class Loan {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public User getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -79,11 +79,11 @@ public class Loan {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Loan loan = (Loan) o;
-        return Double.compare(loan.amount, amount) == 0 && Double.compare(loan.interestRate, interestRate) == 0 && creditTerm == loan.creditTerm && Double.compare(loan.monthlyPayment, monthlyPayment) == 0 && Objects.equals(dateOfRegistration, loan.dateOfRegistration) && Objects.equals(userId, loan.userId);
+        return Double.compare(loan.amount, amount) == 0 && Double.compare(loan.interestRate, interestRate) == 0 && creditTerm == loan.creditTerm && Double.compare(loan.monthlyPayment, monthlyPayment) == 0 && Objects.equals(loanDate, loan.loanDate) && Objects.equals(userId, loan.userId) && Objects.equals(description, loan.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateOfRegistration, amount, interestRate, creditTerm, monthlyPayment, userId);
+        return Objects.hash(loanDate, amount, interestRate, creditTerm, monthlyPayment, userId, description);
     }
 }

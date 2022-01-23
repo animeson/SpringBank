@@ -7,9 +7,9 @@
 </head>
 <body>
 
-<div th:each="userlNum: ${card}">
+<div th:each="cardNum: ${card}">
     <a> card number:</a>
-    <a th:href="@{card{cards} (cards = ${userlNum.getCardNumber()})}" th:text="${userlNum.cardNumber}"></a>
+    <a th:href="@{card/{cards} (cards = ${cardNum})}" th:text="${cardNum}"></a>
     <br/>
 </div>
 <div>

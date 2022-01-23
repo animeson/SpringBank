@@ -11,34 +11,34 @@
     <table>
         <tr for="lastName">
             <td id="lastName">last name:</td>
-            <td th:text="${card.lastName}"></td>
+            <td th:text="${cardNumber.lastName}"></td>
         </tr>
 
         <tr for="firstName">
             <td id="firstName">firstName:</td>
-            <td th:text="${card.firstName}"></td>
+            <td th:text="${cardNumber.firstName}"></td>
         </tr>
 
         <tr for="cardNumber">
             <td id="cardNumber">card number:</td>
-            <td th:text="${card.cardNumber}"></td>
+            <td th:text="${cardNumber.cardNumber}"></td>
         </tr>
         <tr for="CVV">
             <td id="CVV">CVV:</td>
-            <td th:text="${card.CVV}"></td>
+            <td th:text="${cardNumber.CVV}"></td>
         </tr>
         <tr for="term">
             <td id="term">term:</td>
-            <td th:text="${card.term}"></td>
+            <td th:text="${cardNumber.term}"></td>
         </tr>
 
         <tr>
             <td id="userId">user id:</td>
-            <td th:text="${card.userId.id}"></td>
+            <td th:text="${cardNumber.userId}"></td>
         </tr>
 
     </table>
-
+    <a th:href="@{card/{cards} (cards = ${cardNumber.getCardNumber()})}">delete</a>
     <a href="/card">cancel</a>
 </div>
 

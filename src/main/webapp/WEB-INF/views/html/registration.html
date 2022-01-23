@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org/">
+      xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
@@ -26,13 +26,15 @@
         <input id="email" placeholder="email" type="email" th:field="*{email}">
     </label>
     <br/>
-
+    <label for="phoneNumber">
+        <input type="text" id="phoneNumber" placeholder="phone number" th:field="*{phoneNumber}">
+    </label>
+    <br/>
     <label for="password">
         <input type="password" id="password" placeholder="password" th:field="*{password}">
     </label>
     <br/>
     <br/>
-
     <input type="submit" value="Create">
     <br/>
     <br/>
