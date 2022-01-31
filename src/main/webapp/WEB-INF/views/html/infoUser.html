@@ -4,59 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="Info + ' ' + about + ' ' +  ${userInfo.firstName} + ' ' + ${userInfo.lastName}"></title>
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 
 </head>
+
 <body>
-<div>
-    <table>
-        <tr for="firstName">
-            <td>first name:</td>
-            <td th:text="${userInfo.firstName}"></td>
-        </tr>
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <div class="card-container">
+                <h1 th:text="${userInfo.firstName}">first name</h1>
+                <h1 th:text="${userInfo.lastName}">last name</h1>
+                <p th:text="${userInfo.email}">email</p>
+                <p th:text="${userInfo.registrationDate}">registration date</p>
+                <p th:text="${userInfo.phoneNumber}">phone number</p>
+                <hr/>
+                <div>
+                    <a class="c-account"  th:href="@{${'/edit/' + userInfo.id}}">edit</a>
+                    <a class="c-account" href="/home">cancel</a>
+                </div>
 
-        <tr for="lastName">
-            <td>last name:</td>
-            <td th:text="${userInfo.lastName}"></td>
-        </tr>
-
-        <tr for="email">
-            <td>email:</td>
-            <td th:text="${userInfo.email}"></td>
-        </tr>
-
-        <tr for="registrationDate">
-            <td>registration date:</td>
-            <td th:text="${userInfo.registrationDate}"></td>
-        </tr>
-        <tr>
-        <tr for="phoneNumber">
-            <td>phone number:</td>
-            <td th:text="${userInfo.phoneNumber}"></td>
-        </tr>
-        <tr>
-            <td>user id:</td>
-            <td th:text="${userInfo.id}"></td>
-        </tr>
-
-<!--        <tr>
-            <td th:text="${userInfo.card}"></td>
-        </tr>
-        <tr>
-            <td th:text="${userInfo.loan}"></td>
-        </tr>-->
-
-        <tr>
-
-            <td>
-                <a th:href="@{${'/edit/' + userInfo.id}}">edit</a>
-                <a href="/home">cancel</a>
-            </td>
-        </tr>
-    </table>
-
+            </div>
+        </div>
+    </div>
 
 </div>
-
-
 </body>
 </html>

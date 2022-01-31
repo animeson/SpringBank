@@ -4,59 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit info</title>
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/edit_user{ID} (ID = ${user.getId()})}" th:object="${user}">
-    <table>
-        <tr for="firstName">
-            <td>first name:</td>
-            <td>
-                <label>
-                    <input type="text" th:field="${user.firstName}" id="firstName">
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <h3>edit info</h3>
+            <form th:method="PATCH" th:action="@{/edit_user{ID} (ID = ${user.getId()})}" th:object="${user}">
+                <label for="firstName" >
+                    <input placeholder="first name" type="text" th:field="${user.firstName}" id="firstName">
                 </label>
-            </td>
-        </tr>
+                <label for="lastName">
+                    <input placeholder="last name" type="text" th:field="${user.lastName}" id="lastName">
+                </label>
+                <label for="email">
+                    <input placeholder="email" type="text" th:field="${user.email}" id="email">
+                </label>
+                <label for="phoneNumber">
+                    <input placeholder="phone number" type="text" th:field="${user.phoneNumber}" id="phoneNumber">
+                </label>
+                <label for="password">
+                    <input placeholder="password" type="text" th:field="${user.password}" id="password">
+                </label>
 
-        <tr for="lastName">
-            <td>last name:</td>
-            <td>
-            <label>
-                <input type="text" th:field="${user.lastName}" id="lastName">
-            </label>
-            </td>
-        </tr>
 
-        <tr for="email">
-            <td>email:</td>
-            <td>
-                <label>
-                    <input type="text" th:field="${user.email}" id="email">
-                </label>
-            </td>
-        </tr>
-        <tr>
-        <tr for="phoneNumber">
-            <td>phone number:</td>
-            <td>
-                <label>
-                    <input type="text" id="phoneNumber" th:field="${user.phoneNumber}">
-                </label>
-            </td>
-        </tr>
-        <tr for="password">
-            <td>password</td>
-            <td>
-                <label>
-                    <input type="text" id="password" th:field="${user.password}">
-                </label>
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="update">
-    <a href="/home">cancel</a>
-</form>
+            <input type="submit" value="Create">
+            </form>
+            <hr>
+            <div>
+                <a class="c-account" href="/home">cancel</a>
 
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

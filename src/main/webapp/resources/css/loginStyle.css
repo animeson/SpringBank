@@ -1,0 +1,292 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #BEBFC2;
+}
+
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.flex-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-area {
+    margin-right: 40px;
+}
+
+.logo-area img {
+    height: 106px;
+    margin-left: -28px;
+}
+
+.logo-area p {
+    width: 500px;
+    margin: 0;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: normal;
+}
+
+.login-area {
+    text-align: center;
+}
+
+.box {
+    width: 350px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 0 20px lightgray;
+    border-radius: 10px;
+    margin-top: 80px;
+}
+
+.login-area input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 15px 10px;
+    margin: 0 auto 10px;
+    box-sizing: border-box;
+    border: 1px solid #DDDFE2;
+    border-radius: 6px;
+
+}
+.login-area textarea {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 15px 10px;
+    margin: 0 auto 10px;
+    box-sizing: border-box;
+    border: 1px solid #DDDFE2;
+    border-radius: 6px;
+
+}
+
+.login-area input:focus {
+    border: 1px solid lightblue;
+    transition: 300ms;
+    box-shadow: 0 0 2px blue;
+
+}
+
+.login-area input:focus::placeholder {
+    opacity: .2;
+}
+
+.login-area input::placeholder {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #90949C;
+}
+
+.login-area input[type="submit"] {
+    background-color: #1877F2;
+    border: 2px solid  #1877F2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login-area input[type="submit"].background {
+    background-color: firebrick;
+    border: 2px solid firebrick;
+}
+
+
+.login-area a {
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.login-area .fp {
+    margin-bottom: 20px;
+    color: #1877F2;
+}
+
+.cursor{
+    cursor:pointer;
+
+}
+
+.login-area .c-account {
+    background-color: #42B72A;
+    width: 100%;
+    margin: 20px auto 10px;
+    padding: 15px 0;
+    font-weight: bold;
+    color: white;
+    border-radius: 6px;
+}
+.login-area .c-account.background {
+    background-color: firebrick;
+}
+
+.login-area .c-page {
+    display: inline;
+}
+
+.login-area hr {
+    color: #DADDE1;
+    opacity: .4;
+}
+.span {
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+}
+
+
+
+.footer-area .container {
+    width: 80%;
+    margin: auto;
+    max-width: 960px;
+}
+
+.footer-area {
+    font-family: tahoma, serif;
+    font-size: 12px;
+}
+
+.footer-area ul li {
+    float: left;
+}
+
+.footer-area ul li a {
+    text-decoration: none;
+    color: #8A8D91;
+}
+
+.footer-area ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-area ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.footer-top,
+.footer-bottom {
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.footer-area hr {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #B5BCCF;
+}
+
+
+
+
+/*### 3.2 Footer Top ###*/
+
+.footer-top ul li {
+    margin-right: 12px;
+}
+
+.footer-top ul li:last-child a {
+    background: #EDF0F5;
+    padding: 2px 8px;
+    text-decoration: none;
+}
+
+.footer-top ul li:last-child a:hover {
+    background: #D8DDEB;
+}
+
+
+
+
+/*### 3.3 Footer Bottom ###*/
+
+.footer-bottom ul {
+    width: 100%;
+}
+
+.footer-bottom ul li {
+    margin-right: 0;
+    width: 10%;
+    margin-bottom: 5px;
+}
+
+
+.copyright p {
+    margin: 15px 0 0 0;
+    padding-bottom: 4px;
+    color: #A497AD;
+}
+.h1{
+    color: #1877F2;
+    text-align: center;
+}
+
+.copyright a {
+    text-decoration: none;
+    color: #8A8D91;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+    .flex-item {
+        display: block;
+    }
+
+    .logo-area {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .logo-area img {
+        margin-left: 0;
+    }
+
+    .logo-area p {
+        width: 80%;
+        margin: 0 auto;
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    .box {
+        width: 500px;
+        margin: 40px auto 0;
+        padding: 40px 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .logo-area p {
+        width: 100%;
+    }
+
+    .box {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .box{
+        width: 90%;
+    }
+
+    .c-account {
+        padding: 15px 20px;
+    }
+
+
+}

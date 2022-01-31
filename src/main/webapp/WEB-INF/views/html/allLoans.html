@@ -3,21 +3,29 @@
       xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../resources/css/cardOrLoanStyle.css">
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
     <title>All user credit</title>
 </head>
 <body>
 
 <div th:each=" userLoan : ${loans}">
-    <a>amount:</a>
-    <a th:href="@{loan{amount} (amount = ${userLoan})}" th:text="${userLoan}">value</a>
-    <br/>
+    <div class="container">
+        <div class="card">
+            <h3>amount:</h3>
+            <a th:href="@{/loan/{amount} (amount = ${userLoan})}" th:text="${userLoan}">value</a>
+        </div>
+    </div>
 </div>
-<div>
-    <a href="/create_loan"> add loan</a>
-    <br/>
-    <a href="/home"> main page</a>
-</div>
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <a class="c-account" href="/create_loan"> add loan</a>
+            <a class="c-account" href="/home">home</a>
+        </div>
 
+    </div>
+</div>
 
 </body>
 </html>

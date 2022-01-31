@@ -4,32 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
+    <link rel="stylesheet" href="../../../resources/css/userStyle.css">
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 </head>
 <body>
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <div class="card-container">
+                <img class="round" src="https://randomuser.me/api/portraits/men/1.jpg" alt="user"/>
+                <h3>
+                    <a class="a" th:href="@{/id/{ID} (ID = ${user.getId()})}" th:text="${user.firstName}">first name</a>
+                    <a class="a" th:href="@{/id/{ID} (ID = ${user.getId()})}" th:text="${user.lastName}">last last</a>
+                </h3>
+                <div class="buttons">
+                    <button class="primary">
+                        <a href="/loan"><span class="span">loan</span></a>
+                    </button>
+                    <button class="primary">
+                        <a href="/card"><span class="span">card</span></a>
+                    </button>
+                </div>
+                <hr/>
+                <div class="login-area">
+                    <a class="c-account background" href="/"><span>exit</span></a>
 
-<form>
-    <label>Hello,</label>
-    <a th:href="@{/id/{ID} (ID = ${user.getId()})}" th:text="${user.firstName}">first name</a>
-    <a th:href="@{/id/{ID} (ID = ${user.getId()})}" th:text="${user.lastName}">last last</a>
-    <label>!</label>
-    <br/>
-
-    <label>select an action</label>
-    <br/>
-
-    <label>
-        <a href="/loan"><span>loan</span></a>
-        <label>or</label>
-        <a href="/card"><span>card</span></a>
-        <br/>
-    </label>
-
-
-    <label>
-        <a href="/"><span>exit</span></a>
-    </label>
-
-</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

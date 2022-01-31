@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Add card</title>
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 </head>
 <body>
-<form th:method="POST" th:action="@{/addCard}" th:object="${card}">
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <h3>add card</h3>
+            <form th:method="POST" th:action="@{/addCard}" th:object="${card}">
+                <label for="firstName"></label>
+                <input placeholder="first name" type="text" id="firstName" th:field="*{firstName}">
+                <label for="lastName"></label>
+                <input placeholder="last name" type="text" id="lastName" th:field="*{lastName}">
+                <input type="submit" value="create">
+            </form>
+            <hr>
+            <div>
+                <a class="c-account" href="/card">cancel</a>
 
-    <label> create card</label>
-    <br/>
-    <br/>
-    <label for="firstName"></label>
-    <input placeholder="first name" type="text" id="firstName" th:field="*{firstName}">
-    <br/>
+            </div>
 
-    <label for="lastName"></label>
-    <input placeholder="last name" type="text" id="lastName" th:field="*{lastName}">
-    <br/>
-    <br/>
-    <input type="submit" value="create">
-    <a href="/card">cancel</a>
-
-
-</form>
+        </div>
+    </div>
+</div>
 
 </body>
-</html>
+</html><!--
+
+
+
+</form>-->

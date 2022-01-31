@@ -72,4 +72,9 @@ public class DebitCardDao {
     }
 
 
+    public void deleteAllDebitCard(Long id) {
+        jdbcTemplate.update("delete from card where user_id =?", id);
+    }
+
+
 }

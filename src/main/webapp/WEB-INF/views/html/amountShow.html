@@ -3,49 +3,30 @@
       xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
     <title>loan information</title>
 </head>
 <body>
 <div>
-    <table>
-        <tr for="amount">
-            <td id="amount">amount:</td>
-            <td th:text="${loan.amount}"></td>
-        </tr>
-        <tr for="dateOfRegistration">
-            <td id="dateOfRegistration">date of registration:</td>
-            <td th:text="${loan.loanDate}"></td>
-        </tr>
+    <div class="flex-item">
+        <div class="login-area">
+            <div class="box">
+                <div class="card-container">
+                    <h1 th:text="${loan.description}">description</h1>
+                    <h1 th:text="${loan.amount}">amount</h1>
+                    <p th:text="${loan.creditTerm}">creditTerm</p>
+                    <p th:text="${loan.monthlyPayment}">monthlyPayment</p>
+                    <p th:text="${loan.loanDate}">loanDate</p>
+                    <p th:text="${loan.interestRate}">interestRate</p>
+                    <hr/>
+                    <a class="c-account" href="/loan">cancel</a>
 
-        <tr for="interestRate">
-            <td id="interestRate">interest rate:</td>
-            <td th:text="${loan.interestRate}"></td>
-        </tr>
+                </div>
+            </div>
+        </div>
 
-        <tr for="creditTerm">
-            <td id="creditTerm">credit term:</td>
-            <td th:text="${loan.creditTerm}"></td>
-        </tr>
+    </div>
 
-
-        <tr for="monthlyPayment">
-            <td id="monthlyPayment">monthly payment:</td>
-            <td th:text="${loan.monthlyPayment}"></td>
-        </tr>
-
-        <tr>
-            <td id="description">description:</td>
-            <td th:text="${loan.description}"></td>
-        </tr>
-
-        <tr>
-            <td id="userId">user id:</td>
-            <td th:text="${loan.userId}"></td>
-        </tr>
-
-    </table>
-    <a>edit</a>
-    <a href="/loan">cancel</a>
 </div>
 </body>
 </html>

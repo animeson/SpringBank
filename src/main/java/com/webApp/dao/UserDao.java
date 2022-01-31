@@ -23,7 +23,7 @@ public class UserDao {
 
     public Long showIdUser(String email, String password) {
         return jdbcTemplate.queryForObject("select id from client where email =? and password =?",
-                Long.class, email, get_SHA_512_SecurePassword(password,email));
+                Long.class, email, getSHA512SecurePassword(password, email));
 
     }
 
@@ -36,12 +36,11 @@ public class UserDao {
 
     public void newUser(User user) {
         LocalDate date = LocalDate.now();
-        jdbcTemplate.update("insert into client values (?,?,?,?,?,?,?)",
-                1,
+        jdbcTemplate.update("insert into client (firstname, lastname, email, password, phonenumber, registrationdate) values (?,?,?,?,?,?)",
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                get_SHA_512_SecurePassword(user.getPassword(),user.getEmail()),
+                getSHA512SecurePassword(user.getPassword(), user.getEmail()),
                 user.getPhoneNumber(),
                 date);
     }
@@ -59,11 +58,16 @@ public class UserDao {
                 updateUser.getLastName(),
                 updateUser.getEmail(),
                 updateUser.getPhoneNumber(),
-                get_SHA_512_SecurePassword(updateUser.getPassword(),updateUser.getEmail()), id);
+                getSHA512SecurePassword(updateUser.getPassword(), updateUser.getEmail()), id);
+    }
+
+    public void editPassword(String password, String email, String phoneNumber) {
+        jdbcTemplate.update("update client set password = ? where email =? and phonenumber =?",
+                getSHA512SecurePassword(password, email), email, phoneNumber );
     }
 
 
-    public String get_SHA_512_SecurePassword(String passwordToHash, String salt){
+    public String getSHA512SecurePassword(String passwordToHash, String salt) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -74,14 +78,11 @@ public class UserDao {
                 sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
             generatedPassword = sb.toString();
-        }
-        catch (NoSuchAlgorithmException e){
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return generatedPassword;
     }
-
-
 
 
 }

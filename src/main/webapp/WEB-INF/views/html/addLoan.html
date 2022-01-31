@@ -4,33 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Add loan</title>
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 </head>
 <body>
-<form th:method="POST" th:action="@{/addLoan}" th:object="${loan}">
-    <label> create loan</label>
-    <br/>
-    <br/>
 
-    <label for="amount">
-        <input id="amount" type="text" placeholder="amount" th:field="*{amount}">
-    </label>
-    <br/>
-    <label for="term">
-        <input id="term" type="text" placeholder="term" th:field="*{creditTerm}">
-    </label>
-    <br/>
-    <label for="interest">
-        <input id="interest" type="text" placeholder="interest" th:field="*{interestRate}">
-    </label>
-    <br/>
-    <label for="description">
-        <textarea placeholder="interest" id="description"  th:field="*{description}"> </textarea>
-    </label>
-    <br/>
-    <br/>
-    <input type="submit" value="create">
-    <a href="/loan">cancel</a>
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <h3>add loan</h3>
+            <form th:method="POST" th:action="@{/addLoan}" th:object="${loan}">
+                <label for="amount">
+                    <input id="amount" type="text" placeholder="amount" th:field="*{amount}">
+                </label>
+                <label for="term">
+                    <input id="term" type="text" placeholder="term" th:field="*{creditTerm}">
+                </label>
+                <label for="interest">
+                    <input id="interest" type="text" placeholder="interest" th:field="*{interestRate}">
+                </label>
+                <label for="description">
+                    <textarea placeholder="interest" id="description" th:field="*{description}"> </textarea>
+                </label>
+                <input type="submit" value="Create">
+            </form>
+            <hr>
+            <div>
+                <a class="c-account" href="/loan">cancel</a>
 
-</form>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<!--
+
+
+
+</form>-->

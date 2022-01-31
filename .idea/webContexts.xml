@@ -8,6 +8,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/addCard.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/addLoan.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/allCards.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/infoUser.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html/mainPage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/html" />
       </map>
     </option>

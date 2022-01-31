@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>registration</title>
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
 </head>
 <body>
-<form th:method="POST" th:action="@{/createNewUser}" th:object="${user}">
+    <div class="flex-item">
+        <div class="login-area">
+            <div class="box">
+                <h3>registration</h3>
+                <form th:method="POST" th:action="@{/createNewUser}" th:object="${user}">
+                    <label for="firstName">
+                        <input type="text" placeholder="first name" id="firstName" th:field="*{firstName}">
+                        <div th:if="${#fields.hasErrors('firstName')}"
+                             th:errors="*{firstName}">firstName error</div>
+                    </label>
 
-    <label> Registration </label>
-    <br/>
-    <br/>
+                    <label for="lastName">
+                        <input id="lastName" type="text" placeholder="last name" th:field="*{lastName}">
+                        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName error</div>
+                    </label>
 
-    <label for="firstName">
-        <input type="text" placeholder="first name" id="firstName" th:field="*{firstName}">
-    </label>
-    <br/>
+                    <label for="email">
+                        <input id="email" placeholder="email" type="email" th:field="*{email}">
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email error</div>
+                    </label>
+                    <label for="phoneNumber">
+                        <input type="text" id="phoneNumber" placeholder="phone number" th:field="*{phoneNumber}">
+                        <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phoneNumber error</div>
+                    </label>
+                    <label for="password">
+                        <input type="password" id="password" placeholder="password" th:field="*{password}">
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</div>
+                    </label>
+                    <input type="submit" value="Create">
+                </form>
+                <hr>
+                <div>
+                    <label> Are you already registered?</label>
+                    <a class="c-account" href="/">Login in </a>
 
-    <label for="lastName">
-        <input id="lastName" type="text" placeholder="last name" th:field="*{lastName}">
-    </label>
-    <br/>
+                </div>
 
-    <label for="email">
-        <input id="email" placeholder="email" type="email" th:field="*{email}">
-    </label>
-    <br/>
-    <label for="phoneNumber">
-        <input type="text" id="phoneNumber" placeholder="phone number" th:field="*{phoneNumber}">
-    </label>
-    <br/>
-    <label for="password">
-        <input type="password" id="password" placeholder="password" th:field="*{password}">
-    </label>
-    <br/>
-    <br/>
-    <input type="submit" value="Create">
-    <br/>
-    <br/>
-    <label> Are you already registered?</label>
-    <a href="/">Login in </a>
-
-
-</form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
+
+<!--
+
+
+</form>-->

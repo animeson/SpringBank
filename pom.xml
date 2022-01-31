@@ -13,6 +13,7 @@
 
     <url>https://www.example.com</url>
 
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -28,6 +29,16 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- Project Lombok  -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!--SpringCore -->
         <dependency>
