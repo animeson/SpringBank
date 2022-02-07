@@ -2,13 +2,20 @@ package com.webApp.entity;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
+@Email
+@Table(name = "client")
 public class User {
+    @Id
+    @GeneratedValue()
     private long id;
 
 

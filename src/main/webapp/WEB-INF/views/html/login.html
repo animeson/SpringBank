@@ -12,7 +12,7 @@
     <div class="login-area">
         <div class="box">
             <h3 class="h1">Sing in</h3>
-            <form th:method="POST" th:action="@{/thisUser}" th:object="${user}">
+            <form th:method="POST" th:action="@{/login}" th:object="${user}">
                 <label for="login">
                     <input type="email" id="login" th:field="*{email}" placeholder="email">
                 </label>

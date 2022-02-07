@@ -3,7 +3,7 @@ package com.webApp.entity;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 @Data
 public class Loan {
@@ -14,5 +14,6 @@ public class Loan {
     private double monthlyPayment; //ежемесячная оплата
     private Long userId; // id пользователя
     private String description; // описание кредита / для чего кредит
+    private Long loanId;
 
 }

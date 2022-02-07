@@ -2,7 +2,6 @@ package com.webApp.entity;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Data
 public class DebitCard {

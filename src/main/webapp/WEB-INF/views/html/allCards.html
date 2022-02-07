@@ -9,13 +9,14 @@
 
 </head>
 <body>
+
 <div th:each="cardNum: ${card}">
     <div class="container">
         <div class="card card-2">
 
             <h3>Card number:</h3>
-            <a th:text="${cardNum}"
-               th:href="@{card/{cards} (cards = ${cardNum})}"></a>
+            <a th:text="${cardNum.cardNumber}"
+               th:href="@{card/{cards} (cards = ${cardNum.cardNumber})}"></a>
         </div>
     </div>
 </div>
@@ -23,17 +24,18 @@
 <div class="flex-item">
     <div class="login-area">
         <div class="box">
-            <a class="c-account" href="/create_card">add card</a>
-            <a class="c-account" href="/home">home</a>
-
+            <form th:method="POST" th:action="@{/addCard}" th:object="${card}">
+                <input class="c-account" type="submit" value="add card">
+            </form>
             <form th:method="DELETE" th:action="@{/card/delAllCard}">
                 <input class="background" type="submit" value="delete all card">
             </form>
+            <a class="c-account" href="/home">home</a>
         </div>
     </div>
 </div>
 
 
-
+</form>
 </body>
 </html>

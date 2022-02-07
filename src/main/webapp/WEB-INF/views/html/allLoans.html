@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div th:each=" userLoan : ${loans}">
+<div th:each=" userLoan : ${loan}">
     <div class="container">
         <div class="card">
             <h3>amount:</h3>
-            <a th:href="@{/loan/{amount} (amount = ${userLoan})}" th:text="${userLoan}">value</a>
+            <a th:href="@{/loan/{amount} (amount = ${userLoan.amount})}" th:text="${userLoan.amount}">value</a>
         </div>
     </div>
 </div>

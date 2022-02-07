@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../resources/css/loginStyle.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="flex-item">
+    <div class="login-area">
+        <div class="box">
+            <div class="card-container">
+                    <h3>remittance</h3>
+                <form th:method="POST" th:action="@{/accountReplenishment}" th:object="${money}">
+
+                    <label for="cardNumber">
+                        <input id="cardNumber" type="text" th:field="*{cardNumber}">
+                    </label>
+
+                    <label for="amount">
+                        <input id="amount" type="text" th:field="*{currentBalance}">
+                    </label>
+                    <input type="submit" value="send">
+                    <a class="c-account background" href="/card">close</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

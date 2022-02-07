@@ -20,6 +20,9 @@
                     <p th:text="${loan.interestRate}">interestRate</p>
                     <hr/>
                     <a class="c-account" href="/loan">cancel</a>
+                    <form th:method="POST" th:action="@{/repayment}">
+                        <input type="submit" value="repayment">
+                    </form>
 
                 </div>
             </div>

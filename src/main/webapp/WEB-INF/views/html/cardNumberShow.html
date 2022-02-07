@@ -12,14 +12,17 @@
     <div class="login-area">
         <div class="box">
             <div class="card-container">
-                <h1 th:text="${cardNumber.firstName}">first name</h1>
-                <h1 th:text="${cardNumber.lastName}">last name</h1>
-                <p th:text="${cardNumber.cardNumber}">card number</p>
-                <p th:text="${cardNumber.CVV}">cvv</p>
-                <p th:text="${cardNumber.term}">term</p>
+                <h1 th:text="${cardNum.firstName}">first name</h1>
+                <h1 th:text="${cardNum.lastName}">last name</h1>
+                <p th:text="${cardNum.cardNumber}">card number</p>
+                <p th:text="${cardNum.CVV}">cvv</p>
+                <p th:text="${cardNum.term}">term</p>
+                <p th:text="${cardNum.currentBalance}">term</p>
+
                 <hr/>
-                <form th:method="DELETE" th:href="@{card/{cards} (cards = ${cardNumber.getCardNumber()})}">
+                <form th:method="DELETE" th:href="@{card/{cards} (cards = ${cardNum.getCardNumber()})}">
                     <input class="background" type="submit" value="delete">
+                    <a class="c-account" href="/quantity">remittance</a>
                     <a class="c-account" href="/card">cancel</a>
                 </form>
 
