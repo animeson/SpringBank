@@ -61,20 +61,13 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- validator -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.1.6.Final</version>
-        </dependency>
-
         <!-- Spring WebMVC-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+        <!--Spring Jdbc-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -95,6 +88,12 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Spring Orm-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <!--- PostgreSQL JDBC Driver -->
         <dependency>
@@ -111,6 +110,11 @@
             <version>5.6.5.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>9.0.56</version>
+        </dependency>
 
     </dependencies>
 

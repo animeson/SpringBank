@@ -1,34 +1,30 @@
+
 package com.webApp.controller;
 
 
-import com.webApp.entity.User;
-import com.webApp.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.webApp.entity.ClientEntity;
+import com.webApp.services.ClientService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.validation.Valid;
 
 
 @Controller
 public class LoginRegistration {
-    private final UserService userService;
+    private final ClientService clientService;
 
-    @Autowired
-    public LoginRegistration(UserService userService) {
-        this.userService = userService;
+    public LoginRegistration(ClientService clientService) {
+        this.clientService = clientService;
     }
 
+
     @GetMapping("/")
-    public String getLoginPage(@ModelAttribute("user") User user) {
+    public String getLoginPage(@ModelAttribute("user") ClientEntity clientEntity) {
+        clientService.doLogin(clientEntity);
         return "login";
 
     }
-
+/*
     @GetMapping("/registration")
     public String getRegisterPage(@ModelAttribute("user") User user) {
         return "registration";
@@ -63,5 +59,5 @@ public class LoginRegistration {
         return "redirect:/";
     }
 
-
+*/
 }

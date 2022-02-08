@@ -1,7 +1,7 @@
 package com.webApp.services;
 
 import com.webApp.dao.LoanDao;
-import com.webApp.entity.Loan;
+import com.webApp.entity.LoanEntity;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
@@ -11,45 +11,32 @@ import java.util.List;
 @Service
 public class LoanService {
     private final LoanDao loanDao;
-    private List<Loan> loans;
+    private List<LoanEntity> loans;
 
     @Setter
-    private Loan loan;
+    private LoanEntity loan;
 
     public LoanService(LoanDao loanDao) {
         this.loanDao = loanDao;
     }
 
 
-    public List<Loan> showLoan(Long id) {
-        loans = loanDao.showSelectedCredit(id);
-        return loans;
+    public List<LoanEntity> showLoan(Long id) {
+        return null;
     }
 
 
-    public Loan showAllAmount(Double amount) {
-        loan = new Loan();
-        for (Loan value : loans) {
-            if (value.getAmount() == amount) {
-                loan = value;
-            }
-        }
-        return loan;
+    public LoanEntity showAllAmount(Double amount) {
+        return null;
     }
 
 
-    public void saveNewLoan(Loan loan, Long id) {
-        double interest = (loan.getAmount() * loan.getInterestRate() / 100);
-        loan.setMonthlyPayment((loan.getAmount() + interest) / loan.getCreditTerm());
-        loanDao.saveNewLoan(loan, id);
+    public void saveNewLoan(LoanEntity loan, Long id) {
+
     }
 
     public void loanRepayment() {
-        if (loan.getAmount() - loan.getMonthlyPayment() <= 0) {
-            loanDao.deleteLoan(loan);
-        } else {
-            loanDao.loanRepayment(loan.getAmount() - loan.getMonthlyPayment(), loan.getLoanId());
-        }
+
     }
 }
 
