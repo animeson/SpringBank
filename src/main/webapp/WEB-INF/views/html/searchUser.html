@@ -12,17 +12,9 @@
     <div class="login-area">
         <div class="box">
             <h3>restore</h3>
-            <form th:method="PATCH" th:action="@{/restorePasswordUser}" th:object="${user}">
+            <form th:method="POST" th:action="@{/searchUser}" th:object="${user}">
                 <label>
-                    <input placeholder="email" type="text" th:field="*{email}">
-                </label>
-
-                <label>
-                    <input placeholder="phone number" type="text" th:field="*{phoneNumber}">
-                </label>
-
-                <label>
-                    <input placeholder="new password" type="text" th:field="*{password}">
+                    <input placeholder="Input you email" type="text" th:field="*{email}">
                 </label>
                 <input type="submit" value="submit">
             </form>

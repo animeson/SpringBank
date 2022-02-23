@@ -1,41 +1,80 @@
 package com.webApp.dao;
 
-import com.webApp.entity.ClientEntity;
+import com.webApp.entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 public class ClientDao {
-
+    Session session = null;
+    Transaction transaction = null;
     private final SessionFactory sessionFactory;
 
-    @Autowired
     public ClientDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
+    public Client showSelectedUser(String email, String password) {
+        return (Client) sessionFactory.getCurrentSession().
+                createQuery("from Client where email = :email and password = :password")
+                .setParameter("email", email).setParameter("password", password).uniqueResult();
 
-    public ClientEntity showSelectedUser(String email, String password) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from ClientEntity");
-    }
- /*
-
-  public void newUser(User user) {
 
     }
 
 
-    public void edit(long id, User updateUser) {
+    public void newUser(Client user) {
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.save(user);
+            transaction.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
+    }
+
+
+    public void edit(Client updateUser) {
+        sessionFactory.getCurrentSession().update(updateUser);
 
     }
 
-    public void editPassword(User user) {
+    public Client searchUserById(Long id) {
+        return (Client) sessionFactory.getCurrentSession().
+                createQuery("from Client where id=: id").setParameter("id", id).uniqueResult();
+    }
+
+    public Client searchUser(String email) {
+        return (Client) sessionFactory.getCurrentSession().
+                createQuery("from Client where email = :email")
+                .setParameter("email", email).uniqueResult();
+    }
+
+
+    public void editPassword(Client user) {
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.update(user);
+            transaction.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
 
     }
 
-*/
 
 }
+
